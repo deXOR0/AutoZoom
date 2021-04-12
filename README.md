@@ -36,7 +36,7 @@ Next it will loop through all of the class list for the day, join the class with
 - Python 3.8+
 - pip
 - Browser (Preferably Chrome, Firefox, or chromium based Edge)
-- Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver (Firefox)](https://github.com/mozilla/geckodriver/releases), [Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)
+- Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver (Firefox)](https://github.com/mozilla/geckodriver/releases), [Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
 
 ## Limitations
 - This script still relies on webdriver to join zoom meetings as I haven't figure out an easier way to start zoom meeting
