@@ -1,0 +1,10 @@
+# Ignore exe
+*.exe
+
+# Ignore Directory
+.vscode/
+__pycache__/
+Classes/
+
+# Ignore secrets file
+secrets.py
