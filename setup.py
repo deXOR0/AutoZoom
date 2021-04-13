@@ -2,6 +2,7 @@ from selenium import webdriver
 from time import sleep
 import stdiomask
 import mouse
+import keyboard
 import json
 import os
 
@@ -106,6 +107,11 @@ if __name__ == '__main__':
 
     driver.get(URL)
     print('Wait for the browser to open zoom launch meeting page')
+    # Firefox specific command
+    if CONFIG_DATA['browser'] == 'firefox':
+        sleep(5)
+        keyboard.send('enter')
+        sleep(5)
     confirm = 'n'
     while confirm == 'n':
         print("Record 'Launch Meeting' button")
@@ -129,6 +135,31 @@ if __name__ == '__main__':
             confirm = 'n'
     
     print()
+
+    if CONFIG_DATA['browser'] == 'firefox':
+        confirm = 'n'
+        while confirm == 'n':
+            print("Record 'Choose Application' button")
+            confirm = input('Are you ready?\n(y/n)> ').lower()
+            if confirm == 'y':
+                print("Hover your cursor on 'Launch Meeting' button")
+                n = 5
+                while n >= 0:
+                    print(f'Recording in {n} seconds...')
+                    n -= 1
+                    sleep(1)
+                CONFIG_DATA['firefox_choose_application_button_x'], CONFIG_DATA['firefox_choose_application_button_y'] = mouse.get_position()
+                print(f"({CONFIG_DATA['firefox_choose_application_button_x']}, {CONFIG_DATA['firefox_choose_application_button_y']})")
+                confirm = input('Is this correct?\n(y/n)> ').lower()
+                if confirm == 'y':
+                    break
+            elif confirm == 'n':
+                continue
+            else:
+                error('Input must be y or n!')
+                confirm = 'n'
+        
+        print()
 
     confirm = 'n'
     while confirm == 'n':

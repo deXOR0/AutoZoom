@@ -3,6 +3,7 @@ import json
 import datetime
 import time
 import mouse
+import keyboard
 import ss
 import os
 from selenium import webdriver
@@ -128,9 +129,18 @@ if __name__ == '__main__':
         elif CONFIG_DATA['browser'] == 'edge':
             driver = webdriver.Edge()
         driver.get(next_class['MeetingUrl'])
+         # Firefox specific command
+        if CONFIG_DATA['browser'] == 'firefox':
+            time.sleep(5)
+            keyboard.send('enter')
         time.sleep(5)
         mouse.move(CONFIG_DATA['zoom_launch_button_x'], CONFIG_DATA['zoom_launch_button_y'])
         mouse.click(button='left')
+        # Firefox specific command
+        if CONFIG_DATA['browser'] == 'firefox':
+            time.sleep(3)
+            mouse.move(CONFIG_DATA['firefox_choose_application_button_x'], CONFIG_DATA['firefox_choose_application_button_y'])
+            mouse.click(button='left')
         time.sleep(1)
         mouse.move(CONFIG_DATA['zoom_open_button_x'], CONFIG_DATA['zoom_open_button_y'])
         mouse.click(button='left')

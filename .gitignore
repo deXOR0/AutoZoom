@@ -1,5 +1,6 @@
-# Ignore exe
+# Ignore exe and log
 *.exe
+*.log
 
 # Ignore Directory
 .vscode/

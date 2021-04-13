@@ -6,7 +6,7 @@ I built this script to automate my daily classes, sometimes I miss classes becau
 
 ## How it works
 
-I scraped my [Binusmaya Myclass's](https://myclass.apps.binus.ac.id/) api and get all of the class info in json format.
+I scraped [Binusmaya Myclass's](https://myclass.apps.binus.ac.id/) api and get all of the class info in json format.
 After that the script will pick out all the classes that match a certain criteria:
 
 - Have the same date as today's date
@@ -19,6 +19,7 @@ Next it will loop through all of the class list for the day, join the class with
 ## How to use
 
 - Clone this repository
+- Make sure you already have everything from the [prerequisites](https://github.com/deXOR0/AutoZoom/blob/master/ss.py#limitations) list installed
 - Install the requirements with
   ```
   pip install -r requirements.txt
@@ -40,7 +41,10 @@ Next it will loop through all of the class list for the day, join the class with
 - Python 3.8+
 - pip
 - Browser (Preferably Chrome, Firefox, or chromium based Edge)
-- Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver (Firefox)](https://github.com/mozilla/geckodriver/releases), [Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
+- I HIGHLY RECOMMENDS using Chrome or Edge (both derived from Chromium project), although Firefox will also work, albeit a little slower and more of a hassle to setup because it has a different flow to open external apps
+- Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver](https://github.com/mozilla/geckodriver/releases), [Edge Webdriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
+- Extract the .exe files from the webdriver to the project path
+- Notes for Microsoft Edge users, rename the exe file to MicrosoftWebDriver.exe or it will not work
 
 ## Limitations
 
