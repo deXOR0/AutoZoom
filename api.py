@@ -120,9 +120,10 @@ if __name__ == '__main__':
         
         print(f"Joining {next_class['CourseTitleEn']}")
 
-
-        driver = webdriver.Chrome()
-        if CONFIG_DATA['browser'] == 'firefox':
+        driver=None
+        if CONFIG_DATA['browser'] == 'chrome':
+            driver = webdriver.Chrome()
+        elif CONFIG_DATA['browser'] == 'firefox':
             driver = webdriver.Firefox()
         elif CONFIG_DATA['browser'] == 'edge':
             driver = webdriver.Edge()

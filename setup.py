@@ -94,8 +94,10 @@ if __name__ == '__main__':
 
     CONFIG_DATA['browser'] = BROWSER_TYPES[browser-1]
     
-    driver = webdriver.Chrome()
-    if CONFIG_DATA['browser'] == 'firefox':
+    driver=None
+    if CONFIG_DATA['browser'] == 'chrome':
+        driver = webdriver.Chrome()
+    elif CONFIG_DATA['browser'] == 'firefox':
         driver = webdriver.Firefox()
     elif CONFIG_DATA['browser'] == 'edge':
         driver = webdriver.Edge()
