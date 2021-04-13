@@ -98,7 +98,7 @@ if __name__ == '__main__':
     # print(lst)
 
     for _class in lst:
-        if is_today(_class['DisplayStartDate']) and zoom_class(_class['MeetingUrl']) and unique_class(_class['StartTime']):
+        if is_today(_class['DisplayStartDate']) and zoom_class(_class['MeetingUrl']) and unique_class(_class['StartTime']) and not_passed(_class['EndTime']):
             new_class = {}
             new_class['CourseTitleEn'] = _class['CourseTitleEn']
             new_class['DisplayStartDate'] = _class['DisplayStartDate']
