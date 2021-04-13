@@ -6,5 +6,5 @@
 __pycache__/
 Classes/
 
-# Ignore secrets file
-secrets.py
+# Ignore config file
+config.json
