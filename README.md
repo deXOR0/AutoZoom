@@ -19,7 +19,7 @@ Next it will loop through all of the class list for the day, join the class with
 ## How to use
 
 - Clone this repository
-- Make sure you already have everything from the [prerequisites](https://github.com/deXOR0/AutoZoom/blob/master/ss.py#limitations) list installed
+- Make sure you already have everything from the [prerequisites](https://github.com/deXOR0/AutoZoom#prerequisites) list installed
 - Install the requirements with
   ```
   pip install -r requirements.txt
