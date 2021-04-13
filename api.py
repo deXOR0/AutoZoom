@@ -119,6 +119,7 @@ if __name__ == '__main__':
             print(f"Next Class: {next_class['CourseTitleEn']}, Time: {next_class['StartTime']}, Now: {now}")
             time.sleep(1)
         
+        keyboard.send('alt+q')
         print(f"Joining {next_class['CourseTitleEn']}")
 
         driver=None

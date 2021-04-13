@@ -57,5 +57,5 @@ Next it will loop through all of the class list for the day, join the class with
 
 - [x] Write a setup script to automate setup process (recording mouse position, zoom screen location, etc)
 - [ ] Make zoom start in maximized state
-- [ ] Implement auto close meet before next class
+- [x] Implement auto close meet before next class
 - [ ] Make the script works for Linux and macOS

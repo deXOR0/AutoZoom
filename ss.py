@@ -1,6 +1,7 @@
 from desktopmagic.screengrab_win32 import getDisplaysAsImages
 from time import sleep
 import datetime
+import keyboard
 import os
 import json
 
@@ -24,6 +25,7 @@ def create_save_folder(folder=None):
 def screenshot(end_time, zoom_position=ZOOM_ON_SCREEN):
     SAVE_FOLDER = create_save_folder()
     while datetime.datetime.now() < end_time:
+        keyboard.send('alt+u')
         for displayNumber, im in enumerate(getDisplaysAsImages(), 1):
             if displayNumber == zoom_position:
                 time = datetime.datetime.now()
@@ -31,4 +33,5 @@ def screenshot(end_time, zoom_position=ZOOM_ON_SCREEN):
                 filename = f'{SAVE_FOLDER}{str_time}.png'
                 im.save(filename, format='png')
                 print(filename)
+        keyboard.send('alt+u')
         sleep(DELAY)
