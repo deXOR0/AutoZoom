@@ -3,3 +3,4 @@ mouse==0.7.1
 selenium==3.141.0
 Desktopmagic==14.3.11
 stdiomask==0.0.6
+pywin32==300

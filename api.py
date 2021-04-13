@@ -122,6 +122,10 @@ if __name__ == '__main__':
 
 
         driver = webdriver.Chrome()
+        if CONFIG_DATA['browser'] == 'firefox':
+            driver = webdriver.Firefox()
+        elif CONFIG_DATA['browser'] == 'edge':
+            driver = webdriver.Edge()
         driver.get(next_class['MeetingUrl'])
         time.sleep(5)
         mouse.move(CONFIG_DATA['zoom_launch_button_x'], CONFIG_DATA['zoom_launch_button_y'])
