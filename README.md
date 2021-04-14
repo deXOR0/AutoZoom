@@ -16,6 +16,16 @@ After that the script will pick out all the classes that match a certain criteri
 
 Next it will loop through all of the class list for the day, join the class with the help of [Selenium](https://www.selenium.dev/) and take screenshots every 5 minutes in case you needed for evidence of attending the class.
 
+## Prerequisites
+
+- Python 3.8+
+- pip
+- Browser (Preferably Chrome, Firefox, or chromium based Edge)
+- I HIGHLY RECOMMENDS using Chrome or Edge (both derived from Chromium project), although Firefox will also work, albeit a little slower and more of a hassle to setup because it has a different flow to open external apps
+- Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver](https://github.com/mozilla/geckodriver/releases), [Edge Webdriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
+- Extract the .exe files from the webdriver to the project path
+- Notes for Microsoft Edge users, rename the exe file to MicrosoftWebDriver.exe or it will not work
+
 ## How to use
 
 - Clone this repository
@@ -31,16 +41,6 @@ Next it will loop through all of the class list for the day, join the class with
   ```
 - You can also run it with AutoZoom.bat or AutoZoom Shortcut
 - Copy AutoZoom Shortcut to desktop and run it from there everyday and you won't miss a single class!
-
-## Prerequisites
-
-- Python 3.8+
-- pip
-- Browser (Preferably Chrome, Firefox, or chromium based Edge)
-- I HIGHLY RECOMMENDS using Chrome or Edge (both derived from Chromium project), although Firefox will also work, albeit a little slower and more of a hassle to setup because it has a different flow to open external apps
-- Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver](https://github.com/mozilla/geckodriver/releases), [Edge Webdriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
-- Extract the .exe files from the webdriver to the project path
-- Notes for Microsoft Edge users, rename the exe file to MicrosoftWebDriver.exe or it will not work
 
 ## Limitations
 
