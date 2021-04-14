@@ -112,8 +112,8 @@ if __name__ == '__main__':
 
     while len(TODAY_CLASS_LIST) > 0:
         next_class = TODAY_CLASS_LIST[0]
-        next_class_start_time = build_datetime(next_class['StartTime'], -15)
-        next_class_end_time = build_datetime(next_class['EndTime'])
+        next_class_start_time = build_datetime(next_class['StartTime'], CONFIG_DATA['time_offset'] - 15)
+        next_class_end_time = build_datetime(next_class['EndTime'], CONFIG_DATA['time_offset'])
 
         while (now := datetime.datetime.now()) < next_class_start_time:
             print(f"Next Class: {next_class['CourseTitleEn']}, Time: {next_class['StartTime']}, Now: {now}")

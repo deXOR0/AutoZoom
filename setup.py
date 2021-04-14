@@ -1,3 +1,8 @@
+import subprocess
+import sys
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+
 from selenium import webdriver
 from time import sleep
 import stdiomask
@@ -13,6 +18,7 @@ DEFAULT_CONFIG_DATA = {
     'binusmaya_password' : '',
     'zoom_position' : '1',
     'browser' : 'chrome',
+    'time_offset' : 0,
     'zoom_launch_button_x' : '0',
     'zoom_launch_button_y' : '0',
     'zoom_open_button_x' : '0',
@@ -20,6 +26,7 @@ DEFAULT_CONFIG_DATA = {
 }
 CONFIG_DATA = {}
 BROWSER_TYPES = ('chrome', 'firefox', 'edge')
+TIME_ZONES = (0, 60, 120)
 HEADER = '''
 ░██████╗███████╗████████╗██╗░░░██╗██████╗░
 ██╔════╝██╔════╝╚══██╔══╝██║░░░██║██╔══██╗
@@ -94,6 +101,33 @@ if __name__ == '__main__':
             break
 
     CONFIG_DATA['browser'] = BROWSER_TYPES[browser-1]
+
+    print()
+
+    while True:
+
+        print('Select your time zone')
+        print('======================')
+        print('1. UTC+7 (WIB)')
+        print('2. UTC+8 (WITA)')
+        print('3. UTC+9 (WIT)')
+        print('4. Other')
+        try:
+            time_zone = int(input('> '))
+        except:
+            error('Input must be a number!')
+
+        if time_zone == 4:
+            while True:
+                try:
+                    CONFIG_DATA['time_offset'] = int(input('\nTime offset relative to UTC+7 in minutes (Ex: UTC+6 = -60): '))
+                    break
+                except:
+                    error('Input must be a number!')
+            break
+        elif time_zone >= 1 or time_zone <= 3:
+            CONFIG_DATA['time_offset'] = TIME_ZONES[time_zone-1]
+            break
     
     driver=None
     if CONFIG_DATA['browser'] == 'chrome':

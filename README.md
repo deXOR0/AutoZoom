@@ -20,10 +20,6 @@ Next it will loop through all of the class list for the day, join the class with
 
 - Clone this repository
 - Make sure you already have everything from the [prerequisites](https://github.com/deXOR0/AutoZoom#prerequisites) list installed
-- Install the requirements with
-  ```
-  pip install -r requirements.txt
-  ```
 - Run setup file
   ```
   python setup.py
@@ -59,3 +55,4 @@ Next it will loop through all of the class list for the day, join the class with
 - [ ] Make zoom start in maximized state
 - [x] Implement auto close meet before next class
 - [ ] Make the script works for Linux and macOS
+- [x] Added support for multiple timezones
