@@ -73,14 +73,14 @@ def not_passed(end_time):
     '''
     Return true if current time  is less than or equal to class end time
     '''
-    return datetime.datetime.now() <= build_datetime(end_time)
+    return datetime.datetime.now() <= build_datetime(end_time, hour_offset=CONFIG_DATA['time_offset'])
 
-def build_datetime(time_string, offset=0):
+def build_datetime(time_string, hour_offset=0, minute_offset=0):
     '''
     Build Datetime object set to given time_string with a specified offset if provided
     '''
     time_list = [ int(x) for x in time_string.split(':') ]
-    tm = datetime.datetime.now().replace(hour=time_list[0], minute=time_list[1] + offset, second=0, microsecond=0)
+    tm = datetime.datetime.now().replace(hour=(time_list[0] + hour_offset) % 24, minute=(time_list[1] + minute_offset) % 60, second=0, microsecond=0)
     return tm
 
 if __name__ == '__main__':
@@ -112,8 +112,8 @@ if __name__ == '__main__':
 
     while len(TODAY_CLASS_LIST) > 0:
         next_class = TODAY_CLASS_LIST[0]
-        next_class_start_time = build_datetime(next_class['StartTime'], CONFIG_DATA['time_offset'] - 15)
-        next_class_end_time = build_datetime(next_class['EndTime'], CONFIG_DATA['time_offset'])
+        next_class_start_time = build_datetime(next_class['StartTime'], hour_offset=CONFIG_DATA['time_offset'], minute_offset=-15)
+        next_class_end_time = build_datetime(next_class['EndTime'], hour_offset=CONFIG_DATA['time_offset'])
 
         while (now := datetime.datetime.now()) < next_class_start_time:
             print(f"Next Class: {next_class['CourseTitleEn']}, Time: {next_class['StartTime']}, Now: {now}")

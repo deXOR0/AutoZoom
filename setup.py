@@ -26,7 +26,7 @@ DEFAULT_CONFIG_DATA = {
 }
 CONFIG_DATA = {}
 BROWSER_TYPES = ('chrome', 'firefox', 'edge')
-TIME_ZONES = (0, 60, 120)
+TIME_ZONES = (0, 1, 2)
 HEADER = '''
 ░██████╗███████╗████████╗██╗░░░██╗██████╗░
 ██╔════╝██╔════╝╚══██╔══╝██║░░░██║██╔══██╗
@@ -120,7 +120,7 @@ if __name__ == '__main__':
         if time_zone == 4:
             while True:
                 try:
-                    CONFIG_DATA['time_offset'] = int(input('\nTime offset relative to UTC+7 in minutes (Ex: UTC+6 = -60): '))
+                    CONFIG_DATA['time_offset'] = int(input('\nTime offset relative to UTC+7 in hours (Ex: UTC+6 = -1): '))
                     break
                 except:
                     error('Input must be a number!')
@@ -223,4 +223,3 @@ if __name__ == '__main__':
         file.write(json.dumps(CONFIG_DATA))
     
     print('Config saved! You can use the application now!')
-
