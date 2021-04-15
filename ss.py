@@ -26,6 +26,7 @@ def screenshot(end_time, zoom_position=ZOOM_ON_SCREEN):
     SAVE_FOLDER = create_save_folder()
     while datetime.datetime.now() < end_time:
         keyboard.send('alt+u')
+        sleep(1)
         for displayNumber, im in enumerate(getDisplaysAsImages(), 1):
             if displayNumber == zoom_position:
                 time = datetime.datetime.now()
@@ -33,5 +34,6 @@ def screenshot(end_time, zoom_position=ZOOM_ON_SCREEN):
                 filename = f'{SAVE_FOLDER}{str_time}.png'
                 im.save(filename, format='png')
                 print(filename)
+        sleep(1)
         keyboard.send('alt+u')
         sleep(DELAY)
