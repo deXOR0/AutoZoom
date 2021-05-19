@@ -6,6 +6,7 @@ import mouse
 import keyboard
 import ss
 import os
+from inputimeout import inputimeout, TimeoutOccurred
 from selenium import webdriver
 
 BASE = 'https://myclass.apps.binus.ac.id'
@@ -13,6 +14,14 @@ TODAY = datetime.datetime.now().strftime('%c').split(' ')
 TODAY_CLASS_LIST = []
 CONFIG_FILE_PATH = 'config.json'
 CONFIG_DATA = {}
+CUSTOM_JSON_FILE_PATH = 'custom.json'
+CUSTOM_JSON_FILE_DEFAULT_DATA = [{
+    'CourseTitleEn' : '',
+    'DisplayStartDate' : '',
+    'StartTime': '',
+    'EndTime' : '',
+    'MeetingUrl' : ''
+}]
 HEADER = '''
 
 ░█████╗░██╗░░░██╗████████╗░█████╗░  ███████╗░█████╗░░█████╗░███╗░░░███╗
@@ -39,6 +48,26 @@ def init():
         with open(CONFIG_FILE_PATH) as file:
             CONFIG_DATA = json.loads(file.read())
         print('Config loaded!')
+    
+    while True:
+        print('Select an option')
+        print('You have 5 seconds to select an option, otherwise, option 1 will be selected')
+        print('1. Load Class data from MyClass API')
+        print('2. Load data from json file')
+        try:
+            option = int(inputimeout(prompt='> ', timeout=5))
+        except TimeoutOccurred:
+            option = 1
+        except:
+            error('Input must be a number!')
+        
+        if option >= 1 and option <= 2:
+            break
+    
+    if option == 1:
+        get_class_from_api()
+    elif option == 2:
+        get_class_from_json()
 
 def is_today(class_date):
     '''
@@ -83,8 +112,12 @@ def build_datetime(time_string, hour_offset=0, minute_offset=0):
     tm = datetime.datetime.now().replace(hour=(time_list[0] + hour_offset) % 24, minute=(time_list[1] + minute_offset) % 60, second=0, microsecond=0)
     return tm
 
-if __name__ == '__main__':
-    init()
+def get_class_from_api():
+    '''
+    Get class data from myclass' api
+    '''
+    global TODAY_CLASS_LIST
+    print('Getting class data from MyClass API...')
     payload = {'Username': CONFIG_DATA['binusmaya_username'], 'Password': CONFIG_DATA['binusmaya_password']}
     session = requests.Session()
     req = requests.Request('POST', f'{BASE}/Auth/Login', data=payload)
@@ -107,6 +140,33 @@ if __name__ == '__main__':
             new_class['EndTime'] = _class['EndTime']
             new_class['MeetingUrl'] = _class['MeetingUrl']
             TODAY_CLASS_LIST.append(new_class)
+
+def get_class_from_json():
+    '''
+    Get class data from json file
+    '''
+    global TODAY_CLASS_LIST, CUSTOM_JSON_FILE_PATH, CUSTOM_JSON_FILE_DEFAULT_DATA
+    print(f'Getting class data from {CUSTOM_JSON_FILE_PATH}')
+    if not os.path.exists(CUSTOM_JSON_FILE_PATH):
+        print('File not found, generating file...')
+        with open(CUSTOM_JSON_FILE_PATH, 'w') as file:
+            file.write(json.dumps(CUSTOM_JSON_FILE_DEFAULT_DATA))
+        print(f'{CUSTOM_JSON_FILE_PATH} generated, please edit with text editor!')
+    else:
+        with open(CUSTOM_JSON_FILE_PATH) as file:
+            file_data = json.loads(file.read())
+            for _class in file_data:
+                if is_today(_class['DisplayStartDate']) and zoom_class(_class['MeetingUrl']) and unique_class(_class['StartTime']) and not_passed(_class['EndTime']):
+                    new_class = {}
+                    new_class['CourseTitleEn'] = _class['CourseTitleEn']
+                    new_class['DisplayStartDate'] = _class['DisplayStartDate']
+                    new_class['StartTime'] = _class['StartTime']
+                    new_class['EndTime'] = _class['EndTime']
+                    new_class['MeetingUrl'] = _class['MeetingUrl']
+                    TODAY_CLASS_LIST.append(new_class)
+
+if __name__ == '__main__':
+    init()
 
     print(TODAY_CLASS_LIST)
 

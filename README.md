@@ -46,13 +46,10 @@ Next it will loop through all of the class list for the day, join the class with
 
 - This script still relies on webdriver to join zoom meetings as I haven't figure out an easier way to start zoom meeting
 - I'm pretty sure the screengrab module that I use is specific for windows, I need to use this one since it allows me to take local screenshots from my multi-monitor setup
-- The script can't close the zoom meeting automatically as of this update, in the hope that the lecturer will close the zoom meeting after the class ends, but if that doesn't happen, the next meet will clash with the ongoing meet
-- Zoom tends to have a weird behaviour in which it won't start in maximized state, making it hard to automate the closing of the meet since it changes based on size of app
 
 ## To Do
 
 - [x] Write a setup script to automate setup process (recording mouse position, zoom screen location, etc)
-- [ ] Make zoom start in maximized state
 - [x] Implement auto close meet before next class
 - [ ] Make the script works for Linux and macOS
 - [x] Added support for multiple timezones
