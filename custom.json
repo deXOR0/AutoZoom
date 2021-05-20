@@ -1,1 +1,23 @@
-[{"CourseTitleEn": "", "DisplayStartDate": "", "StartTime": "", "EndTime": "", "MeetingUrl": ""}]
+[
+  {
+    "CourseTitleEn": "BINUS Festival Opening Ceremony",
+    "DisplayStartDate": "20 May 2021",
+    "StartTime": "07:20",
+    "EndTime": "08:00",
+    "MeetingUrl": "https://binus.zoom.us/j/94471469648?pwd=NG85QzIxTDZFaEZBV3pZVFc0dmJaQT09"
+  },
+  {
+    "CourseTitleEn": "Seminar How To Start Your Business [Limited 990 Seats)",
+    "DisplayStartDate": "20 May 2021",
+    "StartTime": "10:00",
+    "EndTime": "12:30",
+    "MeetingUrl": "https://binus.zoom.us/j/93163654313?pwd=TkUxQi8zQ1UxK2MzTlFTaEdRcUNDUT09"
+  },
+  {
+    "CourseTitleEn": "Seminar Discover ERP Systems [Limited 990 Seats)",
+    "DisplayStartDate": "20 May 2021",
+    "StartTime": "15:00",
+    "EndTime": "17:20",
+    "MeetingUrl": "https://binus.zoom.us/j/98800454918?pwd=dUlsZFFhY29kUVl5eUVwMWM3NEI0Zz09"
+  }
+]

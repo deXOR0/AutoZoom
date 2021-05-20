@@ -109,7 +109,8 @@ def build_datetime(time_string, hour_offset=0, minute_offset=0):
     Build Datetime object set to given time_string with a specified offset if provided
     '''
     time_list = [ int(x) for x in time_string.split(':') ]
-    tm = datetime.datetime.now().replace(hour=(time_list[0] + hour_offset) % 24, minute=(time_list[1] + minute_offset) % 60, second=0, microsecond=0)
+    tm = datetime.datetime.now().replace(hour=time_list[0], minute=time_list[1], second=0, microsecond=0)
+    tm += datetime.timedelta(hours=hour_offset, minutes=minute_offset)
     return tm
 
 def get_class_from_api():
@@ -174,7 +175,6 @@ if __name__ == '__main__':
         next_class = TODAY_CLASS_LIST[0]
         next_class_start_time = build_datetime(next_class['StartTime'], hour_offset=CONFIG_DATA['time_offset'], minute_offset=-15)
         next_class_end_time = build_datetime(next_class['EndTime'], hour_offset=CONFIG_DATA['time_offset'])
-
         while (now := datetime.datetime.now()) < next_class_start_time:
             print(f"Next Class: {next_class['CourseTitleEn']}, Time: {next_class['StartTime']}, Now: {now}")
             time.sleep(1)
