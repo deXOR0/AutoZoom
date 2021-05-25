@@ -61,6 +61,11 @@ Since some people have problem with the setup process, here's an illustrated gui
 - If you do everything correctly, it should say that the config has been saved. You can now close the setup window.
 ![Close](https://media.discordapp.net/attachments/846612997836505088/846619449947717632/unknown.png)
 
+## Zoom Settings
+- In order to fully utilize AutoZoom, you can use this settings below. Note that this is optional, but I highly recommends it.
+![ShareScreen](https://media.discordapp.net/attachments/846612997836505088/846621150926340106/unknown.png)
+![Shortcuts](https://media.discordapp.net/attachments/846612997836505088/846621260863373322/unknown.png)
+
 ## Limitations
 
 - This script still relies on webdriver to join zoom meetings as I haven't figure out an easier way to start zoom meeting
