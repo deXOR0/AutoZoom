@@ -26,22 +26,6 @@ Next it will loop through all of the class list for the day, join the class with
 - Extract the .exe files from the webdriver to the project path
 - Notes for Microsoft Edge users, rename the exe file to MicrosoftWebDriver.exe or it will not work
 
-## How to use
-
-- Clone this repository
-- Make sure you already have everything from the [prerequisites](https://github.com/deXOR0/AutoZoom#prerequisites) list installed
-- Run setup file
-  ```
-  python setup.py
-  ```
-- You can also run it with Setup.bat or Setup Shortcut
-- Start the script with this command
-  ```
-  python api.py
-  ```
-- You can also run it with AutoZoom.bat or AutoZoom Shortcut
-- Copy AutoZoom Shortcut to desktop and run it from there everyday and you won't miss a single class!
-
 ## Setup Guide
 
 Since some people have problem with the setup process, here's an illustrated guide to help describe the steps clearly.
@@ -66,6 +50,22 @@ Since some people have problem with the setup process, here's an illustrated gui
 ![ShareScreen](https://media.discordapp.net/attachments/846612997836505088/846621150926340106/unknown.png)
 ![Shortcuts](https://media.discordapp.net/attachments/846612997836505088/846621260863373322/unknown.png)
 
+## How to use
+
+- Clone this repository
+- Make sure you already have everything from the [prerequisites](https://github.com/deXOR0/AutoZoom#prerequisites) list installed
+- Run setup file
+  ```
+  python setup.py
+  ```
+- You can also run it with Setup.bat or Setup Shortcut
+- Start the script with this command
+  ```
+  python api.py
+  ```
+- You can also run it with AutoZoom.bat or AutoZoom Shortcut
+- Copy AutoZoom Shortcut to desktop and run it from there everyday and you won't miss a single class!
+
 ## Limitations
 
 - This script still relies on webdriver to join zoom meetings as I haven't figure out an easier way to start zoom meeting
@@ -76,4 +76,5 @@ Since some people have problem with the setup process, here's an illustrated gui
 - [x] Write a setup script to automate setup process (recording mouse position, zoom screen location, etc)
 - [x] Implement auto close meet before next class
 - [ ] Make the script works for Linux and macOS
-- [x] Added support for multiple timezones
+- [x] Add support for multiple timezones
+- [x] Add support to join custom zoom meeting 
