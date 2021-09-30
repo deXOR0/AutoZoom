@@ -6,7 +6,7 @@
 .vscode/
 src/__pycache__/
 classes/
-*/webdriver
+!webdriver/place_webdriver_on_this_directory.txt
 
 # Ignore config file
 src/config.json
