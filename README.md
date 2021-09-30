@@ -28,7 +28,8 @@ Next it will loop through all of the class list for the day, join the class with
 -   Browser (Preferably Chrome, Firefox, or chromium based Edge)
 -   I HIGHLY RECOMMENDS using Chrome or Edge (both derived from Chromium project), although Firefox will also work, albeit a little slower and more of a hassle to setup because it has a different flow to open external apps
 -   Corresponding webdriver ([Chromedriver](https://chromedriver.chromium.org/), [Geckodriver](https://github.com/mozilla/geckodriver/releases), [Edge Webdriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
--   Extract the .exe files from the webdriver to the project path
+-   Extract the .exe files from the webdriver to the webdriver directory
+    ![Webdriver Directory](https://cdn.discordapp.com/attachments/846612997836505088/893153577009311805/unknown.png)
 -   Notes for Microsoft Edge users, rename the exe file to MicrosoftWebDriver.exe or it will not work
 
 ## Setup Guide
@@ -37,7 +38,7 @@ Since some people have problem with the setup process, here's an illustrated gui
 
 -   Make sure you have downloaded and place the corresponding webdriver to AutoZoom's directory. Please refer to [this link](https://github.com/deXOR0/AutoZoom#prerequisites) about webdriver types. Also note that you have to download the correct webdriver version, this should match your browser version. If you're unsure about how to this, you can find how to do it [here](https://www.computerhope.com/issues/ch001329.htm)
 -   Start the setup process by selecting the setup.bat script
-    ![setup.bat](https://media.discordapp.net/attachments/846612997836505088/846613622243196928/unknown.png)
+    ![setup.bat](https://cdn.discordapp.com/attachments/846612997836505088/893152695450480680/unknown.png)
 -   You should be prompted with this screen below, fill in your binusmaya credentials, and select the correct options
     ![Setup CMD](https://cdn.discordapp.com/attachments/846612997836505088/846614843837513748/unknown.png)
 -   If you've correctly installed the webdriver, an instance of your browser should pop up, in this case I use chrome
