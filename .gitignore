@@ -6,7 +6,7 @@
 .vscode/
 src/__pycache__/
 classes/
-webdriver/*
+*/webdriver
 
 # Ignore config file
 src/config.json
