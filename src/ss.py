@@ -6,8 +6,7 @@ import os
 import json
 
 ZOOM_ON_SCREEN = 1
-CLASS_FOLDER = 'Classes/'
-DELAY = 60 * 5
+CLASS_FOLDER = 'classes/'
 SAVE_FOLDER = ''
 
 if not os.path.exists(CLASS_FOLDER):
@@ -22,18 +21,18 @@ def create_save_folder(folder=None):
     os.mkdir(folder)
     return folder
 
-def screenshot(end_time, zoom_position=ZOOM_ON_SCREEN):
+def screenshot(end_time, interval, zoom_position=ZOOM_ON_SCREEN):
     SAVE_FOLDER = create_save_folder()
-    while datetime.datetime.now() < end_time:
+    interval = (interval * 60) - 2 # convert to seconds and account for two seconds delay every screenshots
+    while (time := datetime.datetime.now()) < end_time:
         keyboard.send('alt+u')
         sleep(1)
         for displayNumber, im in enumerate(getDisplaysAsImages(), 1):
             if displayNumber == zoom_position:
-                time = datetime.datetime.now()
                 str_time = ''.join([ '.' if x == ':' else x for x in list(str(time))])
                 filename = f'{SAVE_FOLDER}{str_time}.png'
                 im.save(filename, format='png')
                 print(filename)
         sleep(1)
         keyboard.send('alt+u')
-        sleep(DELAY)
+        sleep(interval)

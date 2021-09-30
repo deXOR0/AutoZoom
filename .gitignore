@@ -4,8 +4,9 @@
 
 # Ignore Directory
 .vscode/
-__pycache__/
-Classes/
+src/__pycache__/
+classes/
+webdriver/*
 
 # Ignore config file
-config.json
+src/config.json

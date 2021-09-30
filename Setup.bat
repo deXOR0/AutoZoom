@@ -1,3 +1,3 @@
 @echo off
-python "%cd%\setup.py" %*
+python "%cd%\src\setup.py" %*
 pause

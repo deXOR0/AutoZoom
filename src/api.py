@@ -10,11 +10,13 @@ from inputimeout import inputimeout, TimeoutOccurred
 from selenium import webdriver
 
 BASE = 'https://myclass.apps.binus.ac.id'
+SRC_PATH = 'src'
+WEBDRIVER_PATH = 'webdriver'
 TODAY = datetime.datetime.now().strftime('%c').split(' ')
 TODAY_CLASS_LIST = []
-CONFIG_FILE_PATH = 'config.json'
+CONFIG_FILE_PATH = os.path.join(SRC_PATH, 'config.json')
 CONFIG_DATA = {}
-CUSTOM_JSON_FILE_PATH = 'custom.json'
+CUSTOM_JSON_FILE_PATH = os.path.join(SRC_PATH, 'custom.json')
 CUSTOM_JSON_FILE_DEFAULT_DATA = [{
     'CourseTitleEn' : '',
     'DisplayStartDate' : '',
@@ -35,6 +37,9 @@ HEADER = '''
 
 def error(msg):
     print(f'[ERROR] - {msg}')
+
+def warning(msg):
+    print(f'[WARNING] - {msg}')
 
 def init():
     global CONFIG_DATA, CONFIG_FILE_PATH
@@ -77,7 +82,7 @@ def is_today(class_date):
     TODAY = list(filter(None, TODAY))
     date, month, year = class_date.split(' ')
     date = str(int(date))
-    # print(TODAY, date, month, year)
+    # print('[DATE]', TODAY, date, month, year)
     
     return date == TODAY[2] and month == TODAY[1] and year == TODAY[4]
 
@@ -184,13 +189,13 @@ if __name__ == '__main__':
 
         driver=None
         if CONFIG_DATA['browser'] == 'chrome':
-            driver = webdriver.Chrome()
+            driver = webdriver.Chrome(os.path.join(WEBDRIVER_PATH, 'chromedriver.exe'))
         elif CONFIG_DATA['browser'] == 'firefox':
-            driver = webdriver.Firefox()
+            driver = webdriver.Firefox(os.path.join(WEBDRIVER_PATH, 'geckodriver.exe'))
         elif CONFIG_DATA['browser'] == 'edge':
-            driver = webdriver.Edge()
+            driver = webdriver.Edge(os.path.join(WEBDRIVER_PATH, 'MicrosoftWebDriver.exe'))
         driver.get(next_class['MeetingUrl'])
-         # Firefox specific command
+        # Firefox specific command
         if CONFIG_DATA['browser'] == 'firefox':
             time.sleep(5)
             keyboard.send('enter')
@@ -206,6 +211,9 @@ if __name__ == '__main__':
         mouse.move(CONFIG_DATA['zoom_open_button_x'], CONFIG_DATA['zoom_open_button_y'])
         mouse.click(button='left')
 
-        ss.screenshot(next_class_end_time, CONFIG_DATA['zoom_position'])
-        
+        if CONFIG_DATA['screenshot_interval'] > 0:
+            ss.screenshot(next_class_end_time, CONFIG_DATA['screenshot_interval'], CONFIG_DATA['zoom_position'])
+        else:
+            warning('This class is not documented! To fix this run the Setup and set the screenshot interval')
+
         TODAY_CLASS_LIST.pop(0)

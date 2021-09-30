@@ -1,3 +1,3 @@
 @echo off
-python "%cd%\api.py" %*
+python "%cd%\src\api.py" %*
 pause

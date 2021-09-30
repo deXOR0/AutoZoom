@@ -1,7 +1,11 @@
 import subprocess
 import sys
+import os
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+SRC_PATH = 'src'
+WEBDRIVER_PATH = 'webdriver'
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", os.path.join(SRC_PATH, "requirements.txt")])
 
 from selenium import webdriver
 from time import sleep
@@ -9,10 +13,9 @@ import stdiomask
 import mouse
 import keyboard
 import json
-import os
 
 URL = 'https://binus.zoom.us/j/00000000000?pwd=000000000000'
-CONFIG_FILE_PATH = 'config.json'
+CONFIG_FILE_PATH = os.path.join(SRC_PATH, 'config.json')
 DEFAULT_CONFIG_DATA = {
     'binumaya_username' : '',
     'binusmaya_password' : '',
@@ -22,7 +25,8 @@ DEFAULT_CONFIG_DATA = {
     'zoom_launch_button_x' : '0',
     'zoom_launch_button_y' : '0',
     'zoom_open_button_x' : '0',
-    'zoom_open_button_y' : '0'
+    'zoom_open_button_y' : '0',
+    'screenshot_interval': 0
 }
 CONFIG_DATA = {}
 BROWSER_TYPES = ('chrome', 'firefox', 'edge')
@@ -104,6 +108,24 @@ if __name__ == '__main__':
 
     print()
 
+    interval = -1
+
+    while True:
+
+        print('For documentation purposes, AutoZoom will take screenshots every few minutes')
+        print("Set the interval between each screenshots (0 if you don't want to take any)")
+        try:
+            interval = int(input('> '))
+        except:
+            error('Input must be a whole number!')
+
+        if browser >= 0:
+            break
+
+    CONFIG_DATA['screenshot_interval'] = interval
+
+    print()
+
     while True:
 
         print('Select your time zone')
@@ -131,11 +153,11 @@ if __name__ == '__main__':
     
     driver=None
     if CONFIG_DATA['browser'] == 'chrome':
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(os.path.join(WEBDRIVER_PATH, 'chromedriver.exe'))
     elif CONFIG_DATA['browser'] == 'firefox':
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(os.path.join(WEBDRIVER_PATH, 'geckodriver.exe'))
     elif CONFIG_DATA['browser'] == 'edge':
-        driver = webdriver.Edge()
+        driver = webdriver.Edge(os.path.join(WEBDRIVER_PATH, 'MicrosoftWebDriver.exe'))
 
     print()
 
