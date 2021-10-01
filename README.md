@@ -19,7 +19,7 @@ After that the script will pick out all the classes that match a certain criteri
 -   Unique (some classes are listed twice on the website for some reason)
 -   And hasn't ended yet
 
-Next it will loop through all of the class list for the day, join the class with the help of [Selenium](https://www.selenium.dev/) and take screenshots every 5 minutes in case you needed for evidence of attending the class.
+Next it will loop through all of the class list for the day, join the class with the help of [Selenium](https://www.selenium.dev/) and take screenshots every a certain number of minutes in case you needed for evidence of attending the class. You can set this interval on the setup process, as well as opting to not take any screenshots at all by setting the interval to 0.
 
 ## Prerequisites
 
