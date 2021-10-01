@@ -113,13 +113,14 @@ if __name__ == '__main__':
     while True:
 
         print('For documentation purposes, AutoZoom will take screenshots every few minutes')
+        print('You can find the screenshots on class/ directory, each class will have its own subdirectory named after its start time')
         print("Set the interval between each screenshots (0 if you don't want to take any)")
         try:
             interval = int(input('> '))
         except:
             error('Input must be a whole number!')
 
-        if browser >= 0:
+        if interval >= 0:
             break
 
     CONFIG_DATA['screenshot_interval'] = interval
